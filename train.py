@@ -22,7 +22,7 @@ def main():
     im_width = 224
     batch_size = 16
     epochs = 20
-    num_classes = 5
+    num_classes = 6
 
     _R_MEAN = 123.68
     _G_MEAN = 116.78
@@ -71,8 +71,6 @@ def main():
     feature = resnet50(num_classes=5, include_top=False)
     # feature.build((None, 224, 224, 3))  # when using subclass model
 
-    # 直接下载我转好的权重
-    # download weights 链接: https://pan.baidu.com/s/1tLe9ahTMIwQAX7do_S59Zg  密码: u199
     pre_weights_path = './pretrain_weights.ckpt'
     assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
     feature.load_weights(pre_weights_path)

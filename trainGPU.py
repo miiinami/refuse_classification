@@ -18,7 +18,7 @@ def main():
                 ##tf.config.experimental.set_memory_growth(gpu, True)
                 tf.config.experimental.set_virtual_device_configuration(
                 gpu,
-                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=3072)]  # 限制为3072MB = 3GB
+                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=3072)]  # 此处为显存大小修改
             )
         except RuntimeError as e:
             print(e)
