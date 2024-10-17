@@ -1,0 +1,2 @@
+model_checkpoint_path: "classnet.ckpt"
+all_model_checkpoint_paths: "classnet.ckpt"
