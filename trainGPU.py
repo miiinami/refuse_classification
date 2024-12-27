@@ -11,14 +11,15 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 def main():
+    
     gpus = tf.config.experimental.list_physical_devices("GPU")
     if gpus:
         try:
             for gpu in gpus:
-                ##tf.config.experimental.set_memory_growth(gpu, True)
+                tf.config.experimental.set_memory_growth(gpu, True)
                 tf.config.experimental.set_virtual_device_configuration(
                 gpu,
-                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=3072)]  # 此处为显存大小修改
+                [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=12000)]  # 此处为显存大小修改
             )
         except RuntimeError as e:
             print(e)
@@ -43,7 +44,7 @@ def main():
     _B_MEAN = 103.94
 
     batch_size = 32
-    epochs = 30
+    epochs = 10
 
     # class dict
     data_class = [cla for cla in os.listdir(train_dir) if os.path.isdir(os.path.join(train_dir, cla))]
